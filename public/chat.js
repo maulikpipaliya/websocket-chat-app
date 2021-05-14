@@ -1,8 +1,10 @@
 //make connection
-port = 3048;
+port = 80;
 
+// import srv from '../server';
 
-    const socket = io.connect('https://simple-chit-chat-app.herokuapp.com/:'+port+'/'); 
+// console.log("my port is" + srv);
+    const socket = io.connect('http://localhost:'+port+'/'); 
 
 
 const msg = document.getElementById("msg");

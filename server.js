@@ -6,7 +6,9 @@ const socket = require("socket.io");
 //   console.log("Listening on 3030");
 // });
 
-const server = app.listen(3048, function(){
+const myport = process.env.PORT || 3048;
+
+const server = app.listen(myport, function(){
     console.log("Express server listening on port %d in %s mode", 3048);
   });
 
@@ -41,3 +43,6 @@ io.on("connection", (socket) => {
         socket.broadcast.emit("nottyping", data);
   })
 });
+
+
+// module.exports= myport;
