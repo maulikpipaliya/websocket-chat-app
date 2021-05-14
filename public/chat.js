@@ -50,5 +50,5 @@ socket.on('typing', function (data) {
 
 socket.on('nottyping', function (data) {
     console.log("NotTyping received from server" + data);
-    feedback.innerHTML = '';
+    feedback.innerHTML = 'value';
 });
