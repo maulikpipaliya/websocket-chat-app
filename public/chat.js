@@ -37,14 +37,8 @@ msg.addEventListener('keypress', () => {
     socket.emit('typing', username.value)
 })
 
-msg.addEventListener('keyup', () => {
-    socket.emit('nottyping', username.value)
-})
 
 socket.on('typing', function(data){
     feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
 });
 
-socket.on('nottyping', function(data){
-    feedback.innerHTML = '';
-});

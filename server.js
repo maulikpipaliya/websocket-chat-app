@@ -38,10 +38,7 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("typing", data);
   });
     
-    socket.on("nottyping", (data) => {
-        console.log("not typing called");
-        socket.broadcast.emit("nottyping", data);
-  })
+  
 });
 
 
