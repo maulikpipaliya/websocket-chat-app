@@ -29,7 +29,7 @@ btn.addEventListener('click', () => {
 
 socket.on('chat', (data) => {
     output.innerHTML += '<p>' + data.username + ":" + data.msg + '</p>';
-    feedback.innerHTML = '';
+    msg.innerHTML = '';
 
 })
 
