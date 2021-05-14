@@ -33,13 +33,13 @@ socket.on('chat', (data) => {
 })
 
 msg.addEventListener('keypress', () => {
-    socket.emit('typing', username.value)
+    setTimeout(() => {
+        socket.emit('typing', username.value)
+    }, 500);
 })
 
 msg.addEventListener('keyup', () => {
-    setTimeout(() => {
-        socket.emit('nottyping', username.value);
-    }, 1000);
+    socket.emit('nottyping', username.value);
 })
 
 
@@ -50,5 +50,5 @@ socket.on('typing', function (data) {
 
 socket.on('nottyping', function (data) {
     console.log("NotTyping received from server" + data);
-    feedback.innerHTML = 'value';
+    feedback.innerHTML = 'NOT TYPING';
 });
