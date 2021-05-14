@@ -37,8 +37,19 @@ msg.addEventListener('keypress', () => {
     socket.emit('typing', username.value)
 })
 
+msg.addEventListener('keyup', () => {
+    setTimeout(() => {
+        socket.emit('nottyping', username.value);
+    }, 1000);
+})
 
-socket.on('typing', function(data){
+
+socket.on('typing', function (data) {
+    console.log("Typing received from server" + data);
     feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
 });
 
+socket.on('nottyping', function (data) {
+    console.log("NotTyping received from server" + data);
+    feedback.innerHTML = '';
+});

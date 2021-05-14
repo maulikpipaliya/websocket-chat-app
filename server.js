@@ -8,18 +8,18 @@ const socket = require("socket.io");
 
 const myport = process.env.PORT || 3048;
 
-const server = app.listen(myport, function(){
-    console.log("Express server listening on port %d in %s mode", 3048);
-  });
+const server = app.listen(myport, function () {
+  console.log("Express server listening on port %d in %s mode", 3048);
+});
 
 app.use(express.static("public"));
 
 //Socket Setup
 
 const io = socket(server, {
-    cors: {
-        origins: ['https://simple-chit-chat-app.herokuapp.com/']
-    }
+  cors: {
+    origins: ["https://simple-chit-chat-app.herokuapp.com/"],
+  },
 });
 
 io.on("connection", (socket) => {
@@ -34,12 +34,16 @@ io.on("connection", (socket) => {
     io.sockets.emit("chat", data);
   });
 
-  socket.on("typing", (data)=> {
+  socket.on("typing", (data) => {
+    console.log("Typing received from client" + data);
     socket.broadcast.emit("typing", data);
   });
     
-  
+    
+    socket.on('nottyping', (data) => {
+        console.log("Not typing received from client" + data);
+    socket.broadcast.emit("nottyping", data);
+    })
 });
-
 
 // module.exports= myport;
