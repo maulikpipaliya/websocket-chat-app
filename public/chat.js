@@ -1,6 +1,8 @@
 //make connection
 port = 3048;
-const socket = io.connect('https://simple-chit-chat-app.herokuapp.com/'+port+'/'); 
+
+
+    const socket = io.connect('https://simple-chit-chat-app.herokuapp.com/:'+port+'/'); 
 
 
 const msg = document.getElementById("msg");
@@ -11,10 +13,16 @@ const feedback = document.getElementById("feedback");
 
 
 btn.addEventListener('click', () => {
-    socket.emit('chat', {
-        msg: msg.value,
-        username : username.value
-    })
+    console.log("Send button is clicked");
+    try {
+        socket.emit('chat', {
+            msg: msg.value,
+            username : username.value
+        })
+        
+    } catch (error) {
+        console.log(error);
+    }
 })
 
 socket.on('chat', (data) => {

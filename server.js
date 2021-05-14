@@ -7,7 +7,7 @@ const socket = require("socket.io");
 // });
 
 const server = app.listen(3048, function(){
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+    console.log("Express server listening on port %d in %s mode", 3048);
   });
 
 app.use(express.static("public"));
