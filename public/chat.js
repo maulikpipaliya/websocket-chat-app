@@ -1,6 +1,6 @@
 //make connection
 port = 3048;
-const socket = io.connect('https://simple-chit-chat-app.herokuapp.com/'+port+'/');
+const socket = io.connect('https://simple-chit-chat-app.herokuapp.com/'+port+'/'); 
 
 
 const msg = document.getElementById("msg");
