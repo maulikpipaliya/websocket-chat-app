@@ -2,9 +2,13 @@ const express = require("express");
 const app = express();
 const socket = require("socket.io");
 
-const server = app.listen(3030, () => {
-  console.log("Listening on 3030");
-});
+// const server = app.listen(3030, () => {
+//   console.log("Listening on 3030");
+// });
+
+const server = app.listen(process.env.PORT || 3030, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
 
 app.use(express.static("public"));
 
