@@ -33,15 +33,17 @@ socket.on('chat', (data) => {
 })
 
 msg.addEventListener('keypress', () => {
-    socket.emit('typing', username.value);
     clearTimeout(uptimer);
-})
-
-msg.addEventListener('keyup', () => {
+    socket.emit('typing', username.value);
     uptimer = setTimeout(() => {
         socket.emit('nottyping', username.value);
     }, 1000);
 })
+
+// msg.addEventListener('keyup', () => {
+//     uptimer = setTimeout(() => {
+//     }, 1000);
+// })
 
 
 socket.on('typing', function (data) {
