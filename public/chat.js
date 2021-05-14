@@ -4,7 +4,7 @@ port = 80;
 // import srv from '../server';
 
 // console.log("my port is" + srv);
-    const socket = io.connect('http://localhost:'+port+'/'); 
+    const socket = io.connect('https://simple-chit-chat-app.herokuapp.com'); 
 
 
 const msg = document.getElementById("msg");
