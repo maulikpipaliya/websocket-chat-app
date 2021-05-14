@@ -1,20 +1,35 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const socket = require('socket.io');
+const socket = require("socket.io");
 
 const server = app.listen(3030, () => {
-    console.log("Listening on 3030");
+  console.log("Listening on 3030");
 });
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 
+//Socket Setup
 
-//Socket Setup 
+const io = socket(server);
 
+io.on("connection", (socket) => {
+  console.log("Made socket connection");
+  console.log(socket.id);
 
-const io = socket(server); 
+  socket.on("chat", (data) => {
+    console.log("[INFO] : Message received.");
+    console.log("[INFO] : Msg From : " + data.username);
+    console.log("[INFO] : Message : " + data.msg);
 
-io.on('connection', (socket) => {
-    console.log("Made socket connection");
-    console.log(socket.id);
-})
+    io.sockets.emit("chat", data);
+  });
+
+  socket.on("typing", (data)=> {
+    socket.broadcast.emit("typing", data);
+  });
+    
+    socket.on("nottyping", (data) => {
+        console.log("not typing called");
+        socket.broadcast.emit("nottyping", data);
+  })
+});

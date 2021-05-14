@@ -6,9 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Socket Chat App</title>
     <script src="https://cdn.socket.io/4.0.1/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    Hello
+    <div class="en-joyy-chat">
+        <div class="chat-window">
+            <div id="output">
+                <div id="feedback"></div>
+                
+            </div>
+        </div>
+        <input type="text" id="username" placeholder="Type username and send a message">
+        <input type="text" id="msg" placeholder="What's on your mind?">
+        <button id="btn-send">Send msg</button>
+    </div>
 
         <script src="chat.js"></script>
 </body>
