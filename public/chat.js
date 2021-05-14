@@ -29,8 +29,7 @@ btn.addEventListener('click', () => {
 
 socket.on('chat', (data) => {
     output.innerHTML += '<p>' + data.username + ":" + data.msg + '</p>';
-    msg.innerHTML = '';
-
+    msg.value = '';
 })
 
 msg.addEventListener('keypress', () => {
