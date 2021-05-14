@@ -14,7 +14,11 @@ app.use(express.static("public"));
 
 //Socket Setup
 
-const io = socket(server);
+const io = socket(server, {
+    cors: {
+        origins: ['https://simple-chit-chat-app.herokuapp.com/']
+    }
+});
 
 io.on("connection", (socket) => {
   console.log("Made socket connection");
