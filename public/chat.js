@@ -12,7 +12,7 @@ const username = document.getElementById("username");
 const btn = document.getElementById("btn-send");
 const output = document.getElementById("output");
 const feedback = document.getElementById("feedback");
-
+var uptimer;
 
 btn.addEventListener('click', () => {
     console.log("Send button is clicked");
@@ -33,13 +33,14 @@ socket.on('chat', (data) => {
 })
 
 msg.addEventListener('keypress', () => {
-    setTimeout(() => {
-        socket.emit('typing', username.value)
-    }, 500);
+    socket.emit('typing', username.value);
+    clearTimeout(uptimer);
 })
 
 msg.addEventListener('keyup', () => {
-    socket.emit('nottyping', username.value);
+    uptimer = setTimeout(() => {
+        socket.emit('nottyping', username.value);
+    }, 1000);
 })
 
 
