@@ -1,5 +1,5 @@
 //make connection
-port = process.env.PORT || 3030;
+port = 3048;
 const socket = io.connect('https://simple-chit-chat-app.herokuapp.com/'+port+'/');
 
 
